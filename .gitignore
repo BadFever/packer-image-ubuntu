@@ -1,0 +1,10 @@
+build/
+*.iso
+packer_cache
+*.tfvars
+.terraform
+.vagrant
+*.tfstate*
+*.log
+variables*.json
+*.pkrvars.hcl
