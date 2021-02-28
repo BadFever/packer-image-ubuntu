@@ -17,5 +17,4 @@ build {
       "\"bootstrap_ansible_user_ssh_public_key='${var.ansible_ssh_public_key}'\""
     ]
   }
-  
 }
