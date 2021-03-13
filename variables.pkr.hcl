@@ -64,6 +64,46 @@ variable "ansible_ssh_public_key" {
     default = ""
 }
 
+variable "vsphere_vcenter_server" {
+    type = string
+    default = ""
+}
+
+variable "vsphere_username" {
+    type = string
+    default = ""
+}
+
+variable "vsphere_password" {
+    type = string
+    default = ""
+}
+
+variable "vsphere_insecure_connection" {
+    type = bool
+    default = true
+}
+
+variable "vsphere_datacenter" {
+    type = string
+    default = ""
+}
+
+variable "vsphere_host" {
+    type = string
+    default = ""
+}
+
+variable "vsphere_network" {
+    type = string
+    default = "VM Network"
+}
+
+variable "vsphere_content_library" {
+    type = string
+    default = ""
+}
+
 locals {
-  version = formatdate("YYYYMMDD_hh_mm_ss",timestamp())
+  version = formatdate("YYYYMMDD'T'hhmmss",timestamp())
 }

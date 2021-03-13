@@ -17,4 +17,31 @@ build {
       "\"bootstrap_ansible_user_ssh_public_key='${var.ansible_ssh_public_key}'\""
     ]
   }
+
+  post-processor "shell-local" {
+    only = ["vsphere-iso.ubuntu_server"]
+    environment_vars = [
+      "VIServer=${var.vsphere_vcenter_server}",
+      "User=${var.vsphere_username}",
+      "PW=${var.vsphere_password}",
+      "ContentLibrary=${var.vsphere_content_library}",
+      "ContentLibraryItemName=Ubuntu Focal 20.04.2-${local.version}"]
+    execute_command = ["powershell.exe", "{{.Vars}} {{.Script}}"]
+    env_var_format = "$env:%s=\"%s\"; "
+    script = "./post-processors/cl-cleanup.ps1"
+  }
+
+  post-processor "shell-local" {
+    only = ["vsphere-iso.ubuntu_server"]
+    environment_vars = [
+      "VIServer=${var.vsphere_vcenter_server}",
+      "User=${var.vsphere_username}",
+      "PW=${var.vsphere_password}",
+      "Datacenter=${var.vsphere_datacenter}",
+      "VMName=${var.guest_os_type}-${var.firmware}-${local.version}"]
+    execute_command = ["powershell.exe", "{{.Vars}} {{.Script}}"]
+    env_var_format = "$env:%s=\"%s\"; "
+    script = "./post-processors/vsphere_delete_vm.ps1"
+  }
+
 }
