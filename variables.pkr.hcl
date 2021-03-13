@@ -104,6 +104,16 @@ variable "vsphere_content_library" {
     default = ""
 }
 
+variable "vsphere_folder" {
+    type = string
+    default = ""
+}
+
+variable "vm_version" {
+    type = number
+    default = 17
+}
+
 locals {
   version = formatdate("YYYYMMDD'T'hhmmss",timestamp())
 }

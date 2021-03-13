@@ -25,6 +25,7 @@ source "vsphere-iso" "ubuntu_server" {
   vm_name = "${var.guest_os_type}-${var.firmware}-${local.version}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "bios"
+  vm_version = "${var.vm_version}"
 
   CPUs = "${var.cpus}"
   cpu_cores = 1
@@ -73,6 +74,8 @@ source "vsphere-iso" "ubuntu_server" {
     library = "${var.vsphere_content_library}"
     name = "Ubuntu Focal 20.04.2-${local.version}"
     description = "${local.version}"
+    folder = "${var.vsphere_folder}"
+    destroy = true
   }
 
   #export {
