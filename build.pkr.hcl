@@ -1,5 +1,5 @@
 build {
-  sources = ["sources.vmware-iso.ubuntu_server"]
+  sources = ["sources.vmware-iso.ubuntu_server","sources.vsphere-iso.ubuntu_server"]
 
   provisioner "shell" {
     execute_command = "echo '${var.ssh_password}' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
