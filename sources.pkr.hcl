@@ -22,6 +22,7 @@ source "vmware-iso" "ubuntu_server" {
 }
 
 source "vsphere-iso" "ubuntu_server" {
+  
   vm_name = "${var.guest_os_type}-${var.firmware}-${local.version}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "bios"

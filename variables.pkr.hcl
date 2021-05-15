@@ -114,6 +114,11 @@ variable "vm_version" {
     default = 17
 }
 
+variable "vm_role" {
+    type = string
+    default = "default"
+}
+
 locals {
   version = formatdate("YYYYMMDD'T'hhmmss",timestamp())
 }

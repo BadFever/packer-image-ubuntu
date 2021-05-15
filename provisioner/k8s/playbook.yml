@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+  roles:
+    - role: ansible-role-bootstrap
+      become: true
+    - role: ansible-role-docker
+      become: true
+    - role: ansible-role-k8s
+      become: true
