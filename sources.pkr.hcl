@@ -23,7 +23,7 @@ source "vmware-iso" "ubuntu_server" {
 
 source "vsphere-iso" "ubuntu_server" {
   
-  vm_name = "${var.guest_os_type}-${var.firmware}-${local.version}"
+  vm_name = "${var.guest_os_type}-${var.firmware}-${var.vm_role}-${local.version}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "bios"
   vm_version = "${var.vm_version}"
@@ -61,7 +61,7 @@ source "vsphere-iso" "ubuntu_server" {
   ssh_password = "ansible"
   ssh_pty = true
   ssh_timeout = "20m"
-  ssh_handshake_attempts = 20
+  ssh_handshake_attempts = 50
   http_directory = "${var.http_directory}/vsphere-iso/"
 
   vcenter_server = "${var.vsphere_vcenter_server}"
@@ -73,7 +73,7 @@ source "vsphere-iso" "ubuntu_server" {
 
   content_library_destination {
     library = "${var.vsphere_content_library}"
-    name = "Ubuntu Focal 20.04.2-${local.version}"
+    name = "Ubuntu Focal 20.04.2-${var.vm_role}-${local.version}"
     description = "${local.version}"
     folder = "${var.vsphere_folder}"
     destroy = true

@@ -5,7 +5,7 @@
   roles:
     - role: ansible-role-bootstrap
       become: true
-    - role: ansible-role-docker
+    - role: ansible-role-containerd
       become: true
-    - role: ansible-role-k8s
+    - role: ansible-role-k8s-preparation
       become: true

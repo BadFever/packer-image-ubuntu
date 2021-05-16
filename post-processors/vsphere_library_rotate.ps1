@@ -3,11 +3,12 @@ $User = $env:User
 $PW = $env:PW
 $ContentLibrary = $env:ContentLibrary
 $ContentLibraryItemName = $env:ContentLibraryItemName
-
+$Role = $env:VMRole
 
 $Date = Get-Date -Format FileDateTime
-
+Import-Module VMware.PowerCLI
 try {
+   
     Write-Host "Connect to vCenter Server: $VIServer"
     Connect-VIServer -Server $VIServer -User $User -Password $PW -ErrorAction Stop | Out-Null
 }
@@ -16,6 +17,7 @@ catch {
 }
 
 $ContentItemLibraryBaseName = $ContentLibraryItemName.Split('-')[0]
+$ContentItemLibraryBaseName = "$ContentItemLibraryBaseName-$Role"
 Write-Host "Content Library Item Base Name: $ContentItemLibraryBaseName"
 
 

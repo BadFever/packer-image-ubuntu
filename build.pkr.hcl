@@ -7,6 +7,7 @@ build {
     scripts = [
       "./provisioner/bootstrap.sh"
     ]
+    pause_before = "90s"
   }
 
   provisioner "ansible-local" {
@@ -25,7 +26,8 @@ build {
       "User=${var.vsphere_username}",
       "PW=${var.vsphere_password}",
       "ContentLibrary=${var.vsphere_content_library}",
-      "ContentLibraryItemName=Ubuntu Focal 20.04.2-${local.version}"]
+      "ContentLibraryItemName=Ubuntu Focal 20.04.2-${var.vm_role}-${local.version}",
+      "VMRole=${var.vm_role}"]
     execute_command = ["powershell.exe", "{{.Vars}} {{.Script}}"]
     env_var_format = "$env:%s=\"%s\"; "
     script = "./post-processors/vsphere_library_rotate.ps1"
