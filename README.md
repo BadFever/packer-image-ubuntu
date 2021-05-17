@@ -1,5 +1,12 @@
 # packer-image-ubuntu
 
+This packer build creates basic ubuntu images for VMware vSphere and VMware Workstation.
+
+## Builders
+
+* vsphere-iso
+* vmware-iso
+
 ## Generate crypted password
 
 ```bash

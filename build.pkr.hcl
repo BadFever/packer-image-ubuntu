@@ -7,7 +7,7 @@ build {
     scripts = [
       "./provisioner/bootstrap.sh"
     ]
-    pause_before = "90s"
+    pause_before = "15s"
   }
 
   provisioner "ansible-local" {

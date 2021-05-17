@@ -1,9 +1,11 @@
-- src: https://github.com/BadFever/ansible-role-bootstrap.git
+- name: ansible-role-bootstrap
+  src: https://github.com/BadFever/ansible-role-bootstrap.git
   version: master
-  name: ansible-role-bootstrap
+
 - name: ansible-role-containerd
-  src: git+https://github.com/geerlingguy/ansible-role-containerd.git
-  version: master
+  src: git+https://github.com/BadFever/ansible-role-containerd.git
+  version: main
+
 - name: ansible-role-k8s-preparation
   src: git+https://github.com/BadFever/ansible-role-k8s-preparation.git
   version: main
