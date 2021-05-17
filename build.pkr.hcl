@@ -19,7 +19,7 @@ build {
     ]
   }
 
-  post-processor "shell-local" {
+/*   post-processor "shell-local" {
     only = ["vsphere-iso.ubuntu_server"]
     environment_vars = [
       "VIServer=${var.vsphere_vcenter_server}",
@@ -31,6 +31,6 @@ build {
     execute_command = ["powershell.exe", "{{.Vars}} {{.Script}}"]
     env_var_format = "$env:%s=\"%s\"; "
     script = "./post-processors/vsphere_library_rotate.ps1"
-  }
+  } */
 
 }
