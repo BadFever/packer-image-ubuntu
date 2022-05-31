@@ -2,7 +2,7 @@
 
 echo "==> Applying updates"
 apt-get update -y
-apt-get upgrade -y
+#apt-get upgrade -y does not work with 22.04 LTS version
 
 echo "==> Install required packages"
 apt-get install git python3 python3-pip --yes

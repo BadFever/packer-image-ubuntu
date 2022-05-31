@@ -1,3 +1,5 @@
+############################## COMMON VARS ##############################
+
 variable "iso_url" {
     type = string
     default = ""
@@ -8,31 +10,29 @@ variable "iso_checksum" {
     default = ""
 }
 
-variable "boot_command" {
-    type = list(string)
-    default = []
+variable "boot_wait" {
+    type = string
+    default = "1s"
 }
 
-variable "ssh_username" {
+variable "http_directory" {
     type = string
-    default = "ubuntu"
+    default = "http"
 }
 
-variable "firmware" {
+############################## PROVISIONG VARS ##############################
+
+variable "ssh_public_key" {
     type = string
-    default = "bios"
+    default = ""
 }
 
-variable "guest_os_type" {
+variable "vm_role" {
     type = string
-    default = "ubuntu-64"
+    default = "default"
 }
 
-variable "ssh_password" {
-    type = string
-    default = "ansible"
-    sensitive = true
-}
+############################## VM VARS ##############################
 
 variable "disk_size" {
     type = string
@@ -49,20 +49,12 @@ variable "cpus" {
   default = "2"
 }
 
-variable "output_directory" {
-    type = string
-    default = "build"
+variable "vm_version" {
+    type = number
+    default = 17
 }
 
-variable "http_directory" {
-    type = string
-    default = "http"
-}
-
-variable "ansible_ssh_public_key" {
-    type = string
-    default = ""
-}
+############################## VSPHERE VARS ##############################
 
 variable "vsphere_vcenter_server" {
     type = string
@@ -99,25 +91,24 @@ variable "vsphere_network" {
     default = "VM Network"
 }
 
-variable "vsphere_content_library" {
-    type = string
-    default = ""
-}
-
 variable "vsphere_folder" {
     type = string
     default = ""
 }
 
-variable "vm_version" {
-    type = number
-    default = 17
+variable "vsphere_datastore" {
+    type = string
+    default = ""
 }
 
-variable "vm_role" {
+############################## OUTPUT VARS ##############################
+
+variable "output_directory" {
     type = string
-    default = "default"
+    default = "build"
 }
+
+############################## LOCAL VARS ##############################
 
 locals {
   version = formatdate("YYYYMMDD'T'hhmmss",timestamp())
