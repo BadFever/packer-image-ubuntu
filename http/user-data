@@ -9,12 +9,12 @@ autoinstall:
     network:
       version: 2
       ethernets:
-        ens224:
+        ens192:
           dhcp4: true
   storage:
     layout:
       name: lvm
-      match: 
+      match:
         path: /dev/sda
   ssh:
     install-server: yes
