@@ -36,6 +36,11 @@ variable "boot_wait" {
     default = "1s"
 }
 
+variable "ansible_ssh_public_key" {
+    type = string
+    default = ""
+}
+
 variable "boot_command" {
     type = list(string)
     default = [
