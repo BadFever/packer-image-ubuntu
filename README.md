@@ -25,7 +25,7 @@ mkpasswd -m sha-512
 
 ```bash
 # build default basic image
-packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubuntu_server" .
+packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubuntu-template" .
 
 # build specific k8s ready image
 packer build -var-file="./ubuntu-vsphere-iso-k8s.pkrvars.hcl" -only="vsphere-iso.ubuntu_server" .
