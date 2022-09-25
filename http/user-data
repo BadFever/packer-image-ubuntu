@@ -9,19 +9,24 @@ autoinstall:
     network:
       version: 2
       ethernets:
-        ens33:
+        ens224:
           dhcp4: true
   storage:
     layout:
       name: lvm
-  identity:
-    hostname: ubuntu
-    username: ubuntu
-    password: $6$AzHyZkX99X$wbkwHnMkZJiJS1bvtSSSyZnqdBx69uJglPpzkVqI/uqc6vNHySg9HooLaRr19c6y3xkonqDU3PrJfFVw.zNzj1
+      match: 
+        path: /dev/sda
   ssh:
     install-server: yes
   user-data:
     disable_root: false
+    users:
+      - name: ansible
+        passwd: $5$X112WxpLAeWkXIEj$3fPK/smH/7a9AJGsoe9PfnwNkR5e4PSgp7WsbtwxJFB
+        shell: /bin/bash
+        lock_passwd: false
+        uid: "1001"
+    hostname: juzo
   late-commands:
     - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
-    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+    - echo 'ansible ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ansible

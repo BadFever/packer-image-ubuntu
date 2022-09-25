@@ -7,7 +7,7 @@ variable "iso_url" {
 
 variable "iso_checksum" {
     type = string
-    default = ""
+    default = "file:https://releases.ubuntu.com/focal/SHA256SUMS"
 }
 
 variable "boot_wait" {
@@ -30,6 +30,17 @@ variable "ssh_public_key" {
 variable "vm_role" {
     type = string
     default = "default"
+}
+
+variable "ssh_username" {
+    type = string
+    default = "ansible"
+}
+
+# Do not change as set in user-data
+variable "ssh_password" {
+    type = string
+    default = "VMware1!"
 }
 
 ############################## VM VARS ##############################

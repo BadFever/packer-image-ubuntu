@@ -1,5 +1,5 @@
 build {
-  sources = ["sources.vsphere-iso.ubuntu_ova"]
+  sources = ["sources.vsphere-iso.ubuntu-template"]
 
   provisioner "shell" {
     execute_command = "echo 'VMware1!' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
