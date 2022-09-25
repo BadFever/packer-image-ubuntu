@@ -31,6 +31,11 @@ variable "ssh_password" {
     sensitive = true
 }
 
+variable "boot_wait" {
+    type = string
+    default = "1s"
+}
+
 variable "boot_command" {
     type = list(string)
     default = [
@@ -56,11 +61,6 @@ variable "guest_os_type" {
 variable "disk_size" {
     type = string
     default = "25600"
-}
-
-variable "disk_size_nfs" {
-    type = string
-    default = "30720"
 }
 
 variable "memory" {
