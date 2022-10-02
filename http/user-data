@@ -26,7 +26,7 @@ autoinstall:
         shell: /bin/bash
         lock_passwd: false
         uid: "1001"
-    hostname: juzo
+    hostname: ubuntu-template
   late-commands:
     - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
     - echo 'ansible ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ansible

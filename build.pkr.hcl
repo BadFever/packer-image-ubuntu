@@ -13,6 +13,7 @@ build {
   provisioner "ansible-local" {
     playbook_file = "./provisioner/${var.vm_role}/playbook.yml"
     galaxy_file = "./provisioner/${var.vm_role}/requirements.yml"
+    galaxy_roles_path = "/usr/share/ansible/roles"
     extra_arguments = [
       "--extra-vars",
       "\"bootstrap_ansible_user_ssh_public_key='${var.ansible_ssh_public_key}'\""

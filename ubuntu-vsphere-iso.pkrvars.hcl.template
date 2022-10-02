@@ -1,7 +1,7 @@
 # iso vars
-iso_url = "https://releases.ubuntu.com/jammy/ubuntu-22.04-live-server-amd64.iso"
-iso_checksum = "file:https://releases.ubuntu.com/jammy/SHA256SUMS"
-ssh_public_key = ""
+iso_url = "https://releases.ubuntu.com/focal/ubuntu-20.04.5-live-server-amd64.iso"
+iso_checksum = "file:https://releases.ubuntu.com/focal/SHA256SUMS"
+ansible_ssh_public_key = ""
 output_directory = ""
 
 # vsphere configuration
