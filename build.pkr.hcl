@@ -27,7 +27,7 @@ build {
           username            = "${var.vsphere_username}"
           password            = "${var.vsphere_password}"
           datacenter          = "${var.vsphere_datacenter}"   
-          folder              = "/${var.vsphere_datacenter}/${var.vsphere_folder}"
+          folder              = "/${var.vsphere_datacenter}/vm/${var.vsphere_folder}"
       }
     }
 
