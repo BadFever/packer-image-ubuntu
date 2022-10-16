@@ -52,6 +52,6 @@ source "vsphere-iso" "ubuntu-template" {
   datacenter = "${var.vsphere_datacenter}"
   host = "${var.vsphere_host}"
   datastore = "${var.vsphere_datastore}"
-  folder = "/${var.vsphere_folder}"
+  folder = "/Discovered virtual machine"
 
 }
