@@ -4,7 +4,7 @@
         {
             "label": "vsphere-iso.ubuntu-ova",
             "type": "shell",
-            "command": "packer build -var-file='./vars/ubuntu-vsphere-iso.pkrvars.hcl' -only='vsphere-iso.ubuntu_ova' -on-error=ask .",
+            "command": "packer build -var-file='./vars/ubuntu-vsphere-iso.pkrvars.hcl' -only='vsphere-iso.ubuntu-template' -on-error=ask .",
             "group": {
                 "kind": "build",
                 "isDefault": true
