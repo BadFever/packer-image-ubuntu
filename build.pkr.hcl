@@ -20,4 +20,15 @@ build {
     ]
   }
 
+  post-processors {
+      post-processor "vsphere-template"{
+          host                = "${var.vsphere_vcenter_server}"
+          insecure            = "${var.vsphere_insecure_connection}"
+          username            = "${var.vsphere_username}"
+          password            = "${var.vsphere_password}"
+          datacenter          = "${var.vsphere_datacenter}"   
+          folder              = "${var.vsphere_folder}"
+      }
+    }
+
 }
