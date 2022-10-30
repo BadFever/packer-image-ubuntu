@@ -5,6 +5,7 @@ This packer build creates basic ubuntu images for VMware vSphere.
 ## Requirements
 
 * Recent version of packer installed.
+* vCenter Server or ESXi host with license
 
 ## Usage
 
@@ -13,13 +14,10 @@ This packer build creates basic ubuntu images for VMware vSphere.
 3. Fill in the required variables
 4. Execute the packer build command
 
-### Additional Notes
+## Available builds
 
-## Generate crypted password
-
-```bash
-mkpasswd -m sha-512
-```
+* sources.vsphere-iso.ubuntu-template
+* sources.vsphere-iso.ubuntu-template-esx
 
 ## Execute build
 
@@ -27,6 +25,6 @@ mkpasswd -m sha-512
 # build default basic image
 packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubuntu-template" .
 
-# build specific k8s ready image
-packer build -var-file="./ubuntu-vsphere-iso-k8s.pkrvars.hcl" -only="vsphere-iso.ubuntu_server" .
+# build default basic image on esxi
+packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubuntu-template-esxi" .
 ```
