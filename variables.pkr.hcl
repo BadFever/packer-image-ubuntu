@@ -137,7 +137,7 @@ variable "vsphere_network" {
 
 variable "vsphere_folder" {
     type = string
-    default = ""
+    default = "/Discovered virtual machine"
 }
 
 ############################ LOCAL VARIABLES ############################
