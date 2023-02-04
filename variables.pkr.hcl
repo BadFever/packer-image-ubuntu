@@ -148,5 +148,8 @@ variable "vsphere_folder" {
 ############################ LOCAL VARIABLES ############################
 
 locals {
-  version = formatdate("YYYYMMDD'T'hhmmss",timestamp())
+  build_time = formatdate("YYYYMMDD'T'hhmmss",timestamp())
+  build_os = split("-", split("/", "${var.iso_url}")[4])[0]
+  build_os_version = split("-", split("/", "${var.iso_url}")[4])[1]
+  build_os_friendly_name = split("/","${var.iso_url}")[3]
 }

@@ -1,6 +1,6 @@
 source "vsphere-iso" "ubuntu-template" {
   
-  vm_name = "ubuntu-template-${local.version}"
+  vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "${var.firmware}"
   vm_version = "${var.vm_version}"
@@ -58,7 +58,7 @@ source "vsphere-iso" "ubuntu-template" {
 
 source "vsphere-iso" "ubuntu-ova" {
   
-  vm_name = "ubuntu-template-${local.version}"
+  vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "${var.firmware}"
   vm_version = "${var.vm_version}"
@@ -114,14 +114,14 @@ source "vsphere-iso" "ubuntu-ova" {
 
   export {
     force = true
-    output_directory = "${var.output_directory}"
+    output_directory = "${var.output_directory}/${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
   }
 
 }
 
 source "vsphere-iso" "ubuntu-template-esx" {
   
-  vm_name = "ubuntu-template-${local.version}"
+  vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "${var.firmware}"
   vm_version = "${var.vm_version}"

@@ -6,7 +6,7 @@ This packer build creates ubuntu images for VMware vSphere and can export the re
 
 * Recent version of packer installed.
 * vCenter Server or ESXi host with license
-* Internet-Connection during provisioning
+* Internet-Connection during provisioning to apply updates and ansible roles
 
 ## Usage
 
@@ -17,9 +17,21 @@ This packer build creates ubuntu images for VMware vSphere and can export the re
 
 ## Available builds
 
-* sources.vsphere-iso.ubuntu-template
-* sources.vsphere-iso.ubuntu-ova
-* sources.vsphere-iso.ubuntu-template-esx
+* vsphere-iso.ubuntu-template
+* vsphere-iso.ubuntu-ova
+* vsphere-iso.ubuntu-template-esx
+
+## Allowed URLs
+
+```yaml
+# FOCAL
+iso_url = "https://releases.ubuntu.com/focal/ubuntu-20.04.5-live-server-amd64.iso"
+iso_checksum = "file:https://releases.ubuntu.com/focal/SHA256SUMS"
+
+# JAMMY
+iso_url = "https://releases.ubuntu.com/jammy/ubuntu-22.04.1-live-server-amd64.iso"
+iso_checksum = "file:https://releases.ubuntu.com/jammy/SHA256SUMS"
+```
 
 ## Execute build
 
