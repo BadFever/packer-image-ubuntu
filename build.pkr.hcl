@@ -34,7 +34,7 @@ build {
 }
 
 build {
-  sources = ["sources.vsphere-iso.ubuntu-template-esx"]
+  sources = ["sources.vsphere-iso.ubuntu-template-esx", "sources.vsphere-iso.ubuntu-ova"]
 
   provisioner "shell" {
     execute_command = "echo '${var.ssh_password}' | {{.Vars}} sudo -E -S bash '{{.Path}}'"

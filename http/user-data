@@ -1,16 +1,14 @@
 #cloud-config
 autoinstall:
   version: 1
-  locale: en_US
+  locale: en_US.UTF-8
   keyboard:
     layout: de
     variant: de
-  network:
-    network:
-      version: 2
-      ethernets:
-        ens192:
-          dhcp4: true
+  identity:
+    hostname: ubuntu-template
+    username: ansible
+    password: $6$FhcddHFVZ7ABA4Gi$ETAgGcI1906lSNN5cmw29JJJ5n2orM4cBxT.KvQllMzlXvDIP6iFeU757XIAh4ajHxCIVNncLM3LojvQ.Ixt30
   storage:
     layout:
       name: lvm
@@ -18,15 +16,10 @@ autoinstall:
         path: /dev/sda
   ssh:
     install-server: yes
+    allow-pw: yes
+  apt:
+    geoip: true
   user-data:
     disable_root: false
-    users:
-      - name: ansible
-        passwd: $5$X112WxpLAeWkXIEj$3fPK/smH/7a9AJGsoe9PfnwNkR5e4PSgp7WsbtwxJFB
-        shell: /bin/bash
-        lock_passwd: false
-        uid: "1001"
-    hostname: ubuntu-template
   late-commands:
-    - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
     - echo 'ansible ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ansible

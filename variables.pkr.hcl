@@ -31,6 +31,11 @@ variable "ssh_password" {
     sensitive = true
 }
 
+variable "ssh_timeout" {
+    type = string
+    default = "30m"
+}
+
 variable "boot_wait" {
     type = string
     default = "1s"
@@ -44,8 +49,8 @@ variable "ansible_ssh_public_key" {
 variable "boot_command" {
     type = list(string)
     default = [
-        "<wait><wait><wait><esc><esc><esc><enter><wait><wait><wait>",
-        "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/\"<enter><wait>",
+        "<wait><wait><wait>c<wait><wait><wait>",
+        "linux /casper/vmlinuz --- autoinstall ipv6.disable=1 ds=\"nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/\"<enter><wait>",
         "initrd /casper/initrd<enter><wait>",
         "boot<enter><wait>"
     ]
