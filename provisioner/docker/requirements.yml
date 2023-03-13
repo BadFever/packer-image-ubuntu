@@ -1,3 +1,3 @@
-- src: https://github.com/BadFever/ansible-role-bootstrap.git
+- src: https://github.com/BadFever/ansible-role-common.git
   version: master
-  name: ansible-role-bootstrap
+  name: ansible-role-common

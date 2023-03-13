@@ -3,5 +3,7 @@
   become: yes
   gather_facts: yes
   roles:
-    - role: ansible-role-bootstrap
+    - role: ansible-role-common
       become: true
+      vars:
+        - ansible_ssh_public_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIO0hlCvQ/T8pXz3C5nffkg21+N9lBWQUISEX5DqvR4w ansible"

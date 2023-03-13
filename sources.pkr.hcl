@@ -27,14 +27,14 @@ source "vsphere-iso" "ubuntu-template" {
     disk_thin_provisioned = true
     disk_controller_index = 0
   }
-  
-  boot_wait = "${var.boot_wait}"
-  boot_command = "${var.boot_command}"
-  shutdown_command = "echo '${var.ssh_password}' | sudo -S shutdown -P now"
 
   configuration_parameters = {
     "disk.EnableUUID" = "TRUE"
   }
+  
+  boot_wait = "${var.boot_wait}"
+  boot_command = "${var.boot_command}"
+  shutdown_command = "echo '${var.ssh_password}' | sudo -S shutdown -P now"
 
   iso_url = "${var.iso_url}"
   iso_checksum = "${var.iso_checksum}"
@@ -52,7 +52,7 @@ source "vsphere-iso" "ubuntu-template" {
   datacenter = "${var.vsphere_datacenter}"
   host = "${var.vsphere_host}"
   datastore = "${var.vsphere_datastore}"
-  folder = "/Discovered virtual machine"
+  folder = "${var.vsphere_folder}"
 
 }
 
