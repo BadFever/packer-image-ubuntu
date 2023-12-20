@@ -3,8 +3,12 @@ stages:
   - build
   - export
 
+image:
+  name: hashicorp/packer:1.10
+  entrypoint:
+    - "/bin/sh"
+
 validate:
   stage: validate
-  image: hashicorp/packer:1.10
   script:
-    - --version
+    - packer --version
