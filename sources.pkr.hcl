@@ -172,6 +172,4 @@ source "vsphere-iso" "ubuntu-template-esx" {
   insecure_connection = "${var.vsphere_insecure_connection}"
   host = "${var.vsphere_host}"
   datastore = "${var.vsphere_datastore}"
-  #folder = "/Discovered virtual machine"
-
 }

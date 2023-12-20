@@ -1,0 +1,10 @@
+stages:
+  - validate
+  - build
+  - export
+
+validate:
+  stage: validate
+  image: hashicorp/packer:1.10
+  script:
+    - packer --version
