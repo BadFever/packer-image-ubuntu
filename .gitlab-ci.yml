@@ -9,4 +9,4 @@ image:
 validate:
   stage: validate
   script:
-    - pwd
+    - init
