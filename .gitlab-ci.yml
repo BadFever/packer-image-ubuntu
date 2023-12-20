@@ -5,10 +5,8 @@ stages:
 
 image:
   name: hashicorp/packer:1.10
-  entrypoint:
-    - "/bin/sh"
 
 validate:
   stage: validate
   script:
-    - packer --version
+    - pwd
