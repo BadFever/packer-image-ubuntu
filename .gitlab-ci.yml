@@ -17,7 +17,7 @@ before_script:
   - export PKR_VAR_iso_url="${iso_url}"
   - export PKR_VAR_iso_checksum="${iso_checksum}"
 
-validate:
+build:
   stage: build
   script:
     - packer --version

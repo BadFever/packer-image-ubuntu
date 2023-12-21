@@ -43,7 +43,11 @@ source "vsphere-iso" "ubuntu-template" {
   ssh_pty = true
   ssh_timeout = "20m"
   ssh_handshake_attempts = 50
-  http_directory = "${var.http_directory}/"
+  #http_directory = "${var.http_directory}/"
+  cd_files = [
+    "./http/meta-data",
+    "./http/user-data"]
+  cd_label = "cidata"
 
   vcenter_server = "${var.vsphere_vcenter_server}"
   username = "${var.vsphere_username}"

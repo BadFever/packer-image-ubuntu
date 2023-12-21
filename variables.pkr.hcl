@@ -44,7 +44,7 @@ variable "ansible_ssh_public_key" {
     default = ""
 }
 
-variable "boot_command" {
+variable "boot_command_old" {
     type = list(string)
     default = [
         "<wait><wait><wait>c<wait><wait><wait>",
@@ -53,6 +53,17 @@ variable "boot_command" {
         "boot<enter><wait>"
     ]
 }
+
+variable "boot_command" {
+    type = list(string)
+    default = [
+        "<wait><wait><wait>c<wait><wait><wait>",
+        "linux /casper/vmlinuz --- autoinstall ipv6.disable=1<enter><wait>",
+        "initrd /casper/initrd<enter><wait>",
+        "boot<enter><wait>"
+    ]
+}
+
 
 ############################ VM VARIABLES ############################
 
