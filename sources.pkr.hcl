@@ -1,6 +1,6 @@
 source "vsphere-iso" "ubuntu-template" {
   
-  vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
+  vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}(${var.branch})"
   guest_os_type = "${var.guest_os_type}"
   firmware = "${var.firmware}"
   vm_version = "${var.vm_version}"

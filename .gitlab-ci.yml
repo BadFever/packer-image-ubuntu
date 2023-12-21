@@ -12,10 +12,10 @@ before_script:
   - export PKR_VAR_vsphere_vcenter_server="${vsphere_vcenter_server}"
   - export PKR_VAR_vsphere_username="${vsphere_username}"
   - export PKR_VAR_vsphere_password="${vsphere_password}"
-  - export PKR_VAR_vsphere_datacenter="de01m01"
-  - export PKR_VAR_vsphere_host="de01m01esx01.badfever.de"
-  - export PKR_VAR_vsphere_network="internal"
-  - export PKR_VAR_vsphere_datastore="de01m01esx01-local01"
+  - export PKR_VAR_vsphere_datacenter="${vsphere_datacenter}"
+  - export PKR_VAR_vsphere_host="${vsphere_host}"
+  - export PKR_VAR_vsphere_network="${vsphere_network}"
+  - export PKR_VAR_vsphere_datastore="${vsphere_datastore}"
   - export PKR_VAR_iso_url="${iso_url}"
   - export PKR_VAR_iso_checksum="${iso_checksum}"
 
@@ -25,3 +25,8 @@ validate:
     - packer --version
     - packer init .
     - packer validate .
+
+build:
+  stage: build
+  script:
+    - packer build -only="vsphere-iso.ubuntu-template" .

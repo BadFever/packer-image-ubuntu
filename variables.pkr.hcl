@@ -143,6 +143,11 @@ variable "vsphere_folder" {
     default = "/Discovered virtual machine"
 }
 
+variable "branch" {
+    type = string
+    default = ""
+}
+
 ############################ LOCAL VARIABLES ############################
 
 locals {
