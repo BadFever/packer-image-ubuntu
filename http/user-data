@@ -4,9 +4,6 @@ autoinstall:
   early-coomands:
     - - sudo systemctl stop ssh
   locale: en_US.UTF-8
-  keyboard:
-    layout: de
-    variant: de
   identity:
     hostname: ubuntu-template
     username: ansible
