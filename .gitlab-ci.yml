@@ -1,7 +1,5 @@
 stages:
-  - validate
   - build
-  - export
 
 image:
   name: b4dfever/packer:dev01
@@ -25,8 +23,4 @@ validate:
     - packer --version
     - packer init .
     - packer validate .
-
-build:
-  stage: build
-  script:
     - packer build -only="vsphere-iso.ubuntu-template" .
