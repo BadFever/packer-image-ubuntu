@@ -5,8 +5,6 @@ stages:
 
 image:
   name: b4dfever/docker-image-packer:dev01
-  entrypoint:
-    - "/bin/sh"
 
 validate:
   stage: validate
