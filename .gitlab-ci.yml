@@ -12,3 +12,4 @@ validate:
   stage: validate
   script:
     - packer --version
+    - packer init .
