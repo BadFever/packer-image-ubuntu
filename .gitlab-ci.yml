@@ -8,8 +8,18 @@ image:
   entrypoint:
     - ""
 
+before_script:
+  - export PKR_VAR_vsphere_vcenter_server="${vsphere_vcenter_server}"
+  - export PKR_VAR_vsphere_username="${vsphere_username}"
+  - export PKR_VAR_vsphere_password="${vsphere_password}"
+  - export PKR_VAR_vsphere_datacenter="de01m01"
+  - export PKR_VAR_vsphere_host="de01m01esx01.badfever.de"
+  - export PKR_VAR_vsphere_network="internal"
+  - export PKR_VAR_vsphere_datastore="de01m01esx01-local01"
+
 validate:
   stage: validate
   script:
     - packer --version
     - packer init .
+    - packer validate .
