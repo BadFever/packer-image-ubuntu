@@ -4,7 +4,7 @@ stages:
   - export
 
 image:
-  name: b4dfever/docker-image-packer:dev01
+  name: b4dfever/packer:dev01
 
 validate:
   stage: validate
