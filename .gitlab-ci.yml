@@ -16,6 +16,8 @@ before_script:
   - export PKR_VAR_vsphere_host="de01m01esx01.badfever.de"
   - export PKR_VAR_vsphere_network="internal"
   - export PKR_VAR_vsphere_datastore="de01m01esx01-local01"
+  - export PKR_VAR_iso_url="${iso_url}"
+  - export PKR_var_iso_checksum="${iso_checksum}"
 
 validate:
   stage: validate

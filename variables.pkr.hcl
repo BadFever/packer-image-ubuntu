@@ -2,12 +2,10 @@
 
 variable "iso_url" {
     type = string
-    default = "https://releases.ubuntu.com/focal/ubuntu-20.04.5-live-server-amd64.iso"
 }
 
 variable "iso_checksum" {
     type = string
-    default = "file:https://releases.ubuntu.com/focal/SHA256SUMS"
 }
 
 variable "output_directory" {
