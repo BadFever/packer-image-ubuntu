@@ -1,12 +1,71 @@
 # packer-image-ubuntu
 
 This packer build creates ubuntu images for VMware vSphere and can export the resulting image as OVA.
+The default installation base installs just the required software do be further automated using the provided mystic user.
+
+Please change the password of the default mystic user after cloning.
 
 ## Requirements
 
 * Recent version of packer installed.
 * vCenter Server or ESXi host with license
 * Internet-Connection during provisioning to apply updates and ansible roles
+
+## Variables
+
+```bash
+iso_url = "https://releases.ubuntu.com/focal/ubuntu-20.04.5-live-server-amd64.iso"
+```
+
+```bash
+iso_checksum = "file:https://releases.ubuntu.com/focal/SHA256SUMS"
+```
+
+```bash
+ansible_ssh_public_key = ""
+```
+
+```bash
+output_directory = ""
+```
+
+### VMware vSphere Configuration
+
+```bash
+vsphere_vcenter_server = ""
+```
+
+```bash
+vsphere_username = ""
+```
+
+```bash
+vsphere_password = ""
+```
+
+```bash
+vsphere_insecure_connection = true
+```
+
+```bash
+vsphere_datacenter = ""
+```
+
+```bash
+vsphere_host = ""
+```
+
+```bash
+vsphere_network = ""
+```
+
+```bash
+vsphere_folder = ""
+```
+
+```bash
+vsphere_datastore = ""
+```
 
 ## Usage
 
@@ -44,4 +103,10 @@ packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubu
 
 # build default basic image on esxi
 packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubuntu-template-esx" .
+```
+
+Boot Command for HTTP
+
+```hcl
+
 ```

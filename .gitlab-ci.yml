@@ -16,6 +16,7 @@ before_script:
   - export PKR_VAR_vsphere_datastore="${vsphere_datastore}"
   - export PKR_VAR_iso_url="${iso_url}"
   - export PKR_VAR_iso_checksum="${iso_checksum}"
+  - export PKR_VAR_mystic_user_ssh_public_key="${mystic_user_ssh_public_key}"
 
 build:
   stage: build

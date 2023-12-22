@@ -3,7 +3,7 @@ source "vsphere-iso" "ubuntu-template" {
   vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}(${var.branch})"
   guest_os_type = "${var.guest_os_type}"
   firmware = "${var.firmware}"
-  vm_version = "${var.vm_version}"
+  vm_version = "${var.vsphere_hardware_version}"
 
   CPUs = "${var.cpus}"
   cpu_cores = "${var.cpu_cores}"
@@ -30,7 +30,7 @@ source "vsphere-iso" "ubuntu-template" {
   
   boot_wait = "${var.boot_wait}"
   boot_command = "${var.boot_command}"
-  shutdown_command = "echo '${var.ssh_password}' | sudo -S shutdown -P now"
+  shutdown_command = "echo 'VMware1!' | sudo -S shutdown -P now"
 
   configuration_parameters = {
     "disk.EnableUUID" = "TRUE"
@@ -38,15 +38,14 @@ source "vsphere-iso" "ubuntu-template" {
 
   iso_url = "${var.iso_url}"
   iso_checksum = "${var.iso_checksum}"
-  ssh_username = "${var.ssh_username}"
-  ssh_password = "${var.ssh_password}"
+  ssh_username = "mystic"
+  ssh_password = "VMware1!"
   ssh_pty = true
   ssh_timeout = "20m"
   ssh_handshake_attempts = 50
-  #http_directory = "${var.http_directory}/"
   cd_files = [
-    "./http/meta-data",
-    "./http/user-data"]
+    "./autoinstall/meta-data",
+    "./autoinstall/user-data"]
   cd_label = "cidata"
 
   vcenter_server = "${var.vsphere_vcenter_server}"
@@ -56,7 +55,7 @@ source "vsphere-iso" "ubuntu-template" {
   datacenter = "${var.vsphere_datacenter}"
   host = "${var.vsphere_host}"
   datastore = "${var.vsphere_datastore}"
-  folder = "/Discovered virtual machine"
+  folder = "${var.vsphere_folder}"
 
 }
 
@@ -65,7 +64,7 @@ source "vsphere-iso" "ubuntu-ova" {
   vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "${var.firmware}"
-  vm_version = "${var.vm_version}"
+  vm_version = "${var.vsphere_hardware_version}"
 
   CPUs = "${var.cpus}"
   cpu_cores = "${var.cpu_cores}"
@@ -92,7 +91,7 @@ source "vsphere-iso" "ubuntu-ova" {
   
   boot_wait = "${var.boot_wait}"
   boot_command = "${var.boot_command}"
-  shutdown_command = "echo '${var.ssh_password}' | sudo -S shutdown -P now"
+  shutdown_command = "echo 'VMware1!' | sudo -S shutdown -P now"
 
   configuration_parameters = {
     "disk.EnableUUID" = "TRUE"
@@ -100,12 +99,15 @@ source "vsphere-iso" "ubuntu-ova" {
 
   iso_url = "${var.iso_url}"
   iso_checksum = "${var.iso_checksum}"
-  ssh_username = "${var.ssh_username}"
-  ssh_password = "${var.ssh_password}"
+  ssh_username = "mystic"
+  ssh_password = "VMware1!"
   ssh_pty = true
   ssh_timeout = "${var.ssh_timeout}"
   ssh_handshake_attempts = 50
-  http_directory = "${var.http_directory}/"
+  cd_files = [
+    "./autoinstall/meta-data",
+    "./autoinstall/user-data"]
+  cd_label = "cidata"
 
   vcenter_server = "${var.vsphere_vcenter_server}"
   username = "${var.vsphere_username}"
@@ -114,7 +116,7 @@ source "vsphere-iso" "ubuntu-ova" {
   datacenter = "${var.vsphere_datacenter}"
   host = "${var.vsphere_host}"
   datastore = "${var.vsphere_datastore}"
-  folder = "/Discovered virtual machine"
+  folder = "${var.vsphere_folder}"
 
   export {
     force = true
@@ -128,7 +130,7 @@ source "vsphere-iso" "ubuntu-template-esx" {
   vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "${var.firmware}"
-  vm_version = "${var.vm_version}"
+  vm_version = "${var.vsphere_hardware_version}"
 
   CPUs = "${var.cpus}"
   cpu_cores = "${var.cpu_cores}"
@@ -155,7 +157,7 @@ source "vsphere-iso" "ubuntu-template-esx" {
   
   boot_wait = "${var.boot_wait}"
   boot_command = "${var.boot_command}"
-  shutdown_command = "echo '${var.ssh_password}' | sudo -S shutdown -P now"
+  shutdown_command = "echo 'VMware1!' | sudo -S shutdown -P now"
 
   configuration_parameters = {
     "disk.EnableUUID" = "TRUE"
@@ -163,13 +165,15 @@ source "vsphere-iso" "ubuntu-template-esx" {
 
   iso_url = "${var.iso_url}"
   iso_checksum = "${var.iso_checksum}"
-  ssh_username = "${var.ssh_username}"
-  ssh_password = "${var.ssh_password}"
+  ssh_username = "mystic"
+  ssh_password = "VMware1!"
   ssh_pty = true
   ssh_timeout = "${var.ssh_timeout}"
   ssh_handshake_attempts = 50
-  http_directory = "${var.http_directory}/"
-
+  cd_files = [
+    "./autoinstall/meta-data",
+    "./autoinstall/user-data"]
+  cd_label = "cidata"
   vcenter_server = "${var.vsphere_vcenter_server}"
   username = "${var.vsphere_username}"
   password = "${var.vsphere_password}"

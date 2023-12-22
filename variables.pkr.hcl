@@ -1,4 +1,4 @@
-############################ PROVISIONING VARIABLES ############################
+############################ GENERAL ############################
 
 variable "iso_url" {
     type = string
@@ -13,21 +13,8 @@ variable "output_directory" {
     default = "build"
 }
 
-variable "http_directory" {
-    type = string
-    default = "http"
-}
 
-variable "ssh_username" {
-    type = string
-    default = "ansible"
-}
-
-variable "ssh_password" {
-    type = string
-    default = "VMware1!"
-    sensitive = true
-}
+############################ PROVISIONING VARIABLES ############################
 
 variable "ssh_timeout" {
     type = string
@@ -39,19 +26,9 @@ variable "boot_wait" {
     default = "1s"
 }
 
-variable "ansible_ssh_public_key" {
+variable "mystic_user_ssh_public_key" {
     type = string
     default = ""
-}
-
-variable "boot_command_old" {
-    type = list(string)
-    default = [
-        "<wait><wait><wait>c<wait><wait><wait>",
-        "linux /casper/vmlinuz --- autoinstall ipv6.disable=1 ds=\"nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/\"<enter><wait>",
-        "initrd /casper/initrd<enter><wait>",
-        "boot<enter><wait>"
-    ]
 }
 
 variable "boot_command" {
@@ -63,7 +40,6 @@ variable "boot_command" {
         "boot<enter><wait>"
     ]
 }
-
 
 ############################ VM VARIABLES ############################
 
@@ -97,12 +73,7 @@ variable "cpu_cores" {
   default = "1"
 }
 
-variable "vm_version" {
-    type = number
-    default = 12
-}
-
-variable "vm_role" {
+variable "install_base" {
     type = string
     default = "default"
 }
@@ -152,6 +123,11 @@ variable "vsphere_network" {
 variable "vsphere_folder" {
     type = string
     default = "/Discovered virtual machine"
+}
+
+variable "vsphere_hardware_version" {
+    type = number
+    default = 12
 }
 
 variable "branch" {

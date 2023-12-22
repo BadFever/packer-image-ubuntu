@@ -6,7 +6,7 @@ autoinstall:
   locale: en_US.UTF-8
   identity:
     hostname: ubuntu-template
-    username: ansible
+    username: mystic
     password: $6$FhcddHFVZ7ABA4Gi$ETAgGcI1906lSNN5cmw29JJJ5n2orM4cBxT.KvQllMzlXvDIP6iFeU757XIAh4ajHxCIVNncLM3LojvQ.Ixt30
   storage:
     layout:
@@ -21,4 +21,4 @@ autoinstall:
   user-data:
     disable_root: false
   late-commands:
-    - echo 'ansible ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ansible
+    - echo 'mystic ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/mystic
