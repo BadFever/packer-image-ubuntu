@@ -82,17 +82,15 @@ variable "install_base" {
 
 variable "vsphere_vcenter_server" {
     type = string
-    default = ""
 }
 
 variable "vsphere_username" {
     type = string
-    default = ""
 }
 
 variable "vsphere_password" {
     type = string
-    default = ""
+    sensitiv = true
 }
 
 variable "vsphere_insecure_connection" {
@@ -102,22 +100,18 @@ variable "vsphere_insecure_connection" {
 
 variable "vsphere_datacenter" {
     type = string
-    default = ""
 }
 
 variable "vsphere_datastore" {
     type = string
-    default = ""
 }
 
 variable "vsphere_host" {
     type = string
-    default = ""
 }
 
 variable "vsphere_network" {
     type = string
-    default = "VM Network"
 }
 
 variable "vsphere_folder" {
