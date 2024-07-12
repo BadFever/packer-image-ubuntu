@@ -27,6 +27,10 @@ source "vsphere-iso" "ubuntu-template" {
     disk_thin_provisioned = true
     disk_controller_index = 0
   }
+
+  configuration_parameters = {
+    "disk.EnableUUID" = "TRUE"
+  }
   
   boot_wait = "${var.boot_wait}"
   boot_command = "${var.boot_command}"
@@ -55,6 +59,7 @@ source "vsphere-iso" "ubuntu-template" {
   datacenter = "${var.vsphere_datacenter}"
   host = "${var.vsphere_host}"
   datastore = "${var.vsphere_datastore}"
+  folder = "${var.vsphere_folder}"
   folder = "${var.vsphere_folder}"
 
 }
@@ -181,3 +186,4 @@ source "vsphere-iso" "ubuntu-template-esx" {
   host = "${var.vsphere_host}"
   datastore = "${var.vsphere_datastore}"
 }
+

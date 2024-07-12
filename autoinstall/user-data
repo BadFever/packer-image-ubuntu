@@ -2,7 +2,7 @@
 autoinstall:
   version: 1
   early-coomands:
-    - - sudo systemctl stop ssh
+    - sudo systemctl stop ssh
   locale: en_US.UTF-8
   identity:
     hostname: ubuntu-template
