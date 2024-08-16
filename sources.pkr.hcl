@@ -2,7 +2,7 @@ source "vsphere-iso" "ubuntu-template" {
   
   vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}(${var.branch})"
   guest_os_type = "${var.guest_os_type}"
-  firmware = "${var.firmware}"
+  firmware = "efi"
   vm_version = "${var.vsphere_hardware_version}"
 
   CPUs = "${var.cpus}"
@@ -26,10 +26,6 @@ source "vsphere-iso" "ubuntu-template" {
     disk_size = "${var.disk_size}"
     disk_thin_provisioned = true
     disk_controller_index = 0
-  }
-
-  configuration_parameters = {
-    "disk.EnableUUID" = "TRUE"
   }
   
   boot_wait = "${var.boot_wait}"
@@ -60,7 +56,6 @@ source "vsphere-iso" "ubuntu-template" {
   host = "${var.vsphere_host}"
   datastore = "${var.vsphere_datastore}"
   folder = "${var.vsphere_folder}"
-  folder = "${var.vsphere_folder}"
 
 }
 
@@ -68,7 +63,7 @@ source "vsphere-iso" "ubuntu-ova" {
   
   vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
   guest_os_type = "${var.guest_os_type}"
-  firmware = "${var.firmware}"
+  firmware = "efi"
   vm_version = "${var.vsphere_hardware_version}"
 
   CPUs = "${var.cpus}"
@@ -132,20 +127,14 @@ source "vsphere-iso" "ubuntu-ova" {
 
 source "vsphere-iso" "ubuntu-template-esx" {
   
-  vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}"
+  vm_name = "${local.build_os}_${local.build_os_friendly_name}_${local.build_time}"
   guest_os_type = "${var.guest_os_type}"
-  firmware = "${var.firmware}"
+  firmware = "efi"
   vm_version = "${var.vsphere_hardware_version}"
 
   CPUs = "${var.cpus}"
   cpu_cores = "${var.cpu_cores}"
-  CPU_reservation = 0
-  CPU_limit = 0
-  CPU_hot_plug = false
   RAM = "${var.memory}"
-  RAM_reservation = 0
-  RAM_reserve_all = false
-  RAM_hot_plug = false
 
   network_adapters {
     network = "${var.vsphere_network}"
@@ -179,11 +168,13 @@ source "vsphere-iso" "ubuntu-template-esx" {
     "./autoinstall/meta-data",
     "./autoinstall/user-data"]
   cd_label = "cidata"
+
   vcenter_server = "${var.vsphere_vcenter_server}"
   username = "${var.vsphere_username}"
   password = "${var.vsphere_password}"
   insecure_connection = "${var.vsphere_insecure_connection}"
-  host = "${var.vsphere_host}"
+
+  host = "${var.vsphere_host }"
   datastore = "${var.vsphere_datastore}"
 }
 

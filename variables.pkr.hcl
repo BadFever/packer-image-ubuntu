@@ -43,11 +43,6 @@ variable "boot_command" {
 
 ############################ VM VARIABLES ############################
 
-variable "firmware" {
-    type = string
-    default = "efi"
-}
-
 variable "guest_os_type" {
     type = string
     default = "ubuntu64guest"
@@ -90,7 +85,7 @@ variable "vsphere_username" {
 
 variable "vsphere_password" {
     type = string
-    sensitiv = true
+    sensitive = true
 }
 
 variable "vsphere_insecure_connection" {
@@ -100,6 +95,7 @@ variable "vsphere_insecure_connection" {
 
 variable "vsphere_datacenter" {
     type = string
+    default = ""
 }
 
 variable "vsphere_datastore" {
@@ -108,6 +104,7 @@ variable "vsphere_datastore" {
 
 variable "vsphere_host" {
     type = string
+    default = ""
 }
 
 variable "vsphere_network" {
