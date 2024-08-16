@@ -8,11 +8,13 @@ Please change the password of the default mystic user after cloning.
 ## Requirements
 
 * Recent version of packer installed.
-  * https://developer.hashicorp.com/packer/install?product_intent=packer
+  * <https://developer.hashicorp.com/packer/install?product_intent=packer>
 * vCenter Server or ESXi host with license
 * Internet-Connection during provisioning to apply updates and ansible roles
 
 ## Build Variables
+
+### ISO Configuration
 
 ```bash
 iso_url = "https://releases.ubuntu.com/focal/ubuntu-20.04.5-live-server-amd64.iso"

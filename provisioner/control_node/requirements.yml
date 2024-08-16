@@ -1,0 +1,8 @@
+- src: https://github.com/BadFever/ansible-role-bootstrap.git
+  version: master
+  name: ansible-role-bootstrap
+
+- name: nginxinc.nginx
+- name: linux-system-roles.cockpit
+- name: andrewrothstein.packer
+- name: andrewrothstein.terraform

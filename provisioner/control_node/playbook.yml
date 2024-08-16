@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  gather_facts: true
+  roles:
+    - role: ansible-role-bootstrap
+      vars:
+        bootstrap_ansible_user: mystic
+        bootstrap_ansible_allow_password_less_sudo: true
+      become: true
+    - role: nginxinc.nginx
+      become: true
+    - role: linux-system-roles.cockpit
+      vars:
+        cockpit_packages: default
+        cockpit_port: 9090
+        #cockpit_cert
+        #cockpit_private_key
+      become: true
+    - role: andrewrothstein.terraform
+      vars:
+        terraform_ver: 1.9.3
+      become: true
+    - role: andrewrothstein.packer
+      vars:
+        packer_ver: 1.11.2
+      become: true
+
+  tasks:
+    - name: Create control_node directory
+      ansible.builtin.file:
+        path: "/home/mystic/control_node"
+        state: directory

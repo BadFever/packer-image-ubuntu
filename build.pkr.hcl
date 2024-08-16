@@ -37,7 +37,6 @@ build {
   name = "esx"
   sources = ["sources.vsphere-iso.ubuntu-template-esx"]
 
-
   provisioner "shell" {
     execute_command = "echo 'VMware1!' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
     expect_disconnect = true
