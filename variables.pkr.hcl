@@ -28,7 +28,7 @@ variable "boot_wait" {
 
 variable "mystic_user_ssh_public_key" {
     type = string
-    default = ""
+    default = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOOoeaJZBSL0axmVNJksxWpbiEzHIgiVhar0ug8YVzd3 mystic"
 }
 
 variable "boot_command" {

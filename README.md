@@ -25,8 +25,21 @@ iso_checksum = "file:https://releases.ubuntu.com/focal/SHA256SUMS"
 ```
 
 ```bash
-ansible_ssh_public_key = ""
+ansible_ssh_public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOOoeaJZBSL0axmVNJksxWpbiEzHIgiVhar0ug8YVzd3 mystic"
 ```
+
+This public key references an insecure private key which has to replaced once deployed.
+
+```
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACDjqHmiWQUi9GsZlTSZLMVqW4hMxyIIlYWq9LoPGFc3dwAAAJi8dOftvHTn
+7QAAAAtzc2gtZWQyNTUxOQAAACDjqHmiWQUi9GsZlTSZLMVqW4hMxyIIlYWq9LoPGFc3dw
+AAAEAPct+bcDGt0Pqe2z7qmUmJ/rXc0D7bqp9qbeRJCiNRlOOoeaJZBSL0axmVNJksxWpb
+iEzHIgiVhar0ug8YVzd3AAAAEGJhZGZldmVyQHRhbmlzaGEBAgMEBQ==
+-----END OPENSSH PRIVATE KEY-----
+```
+
 
 ```bash
 output_directory = ""
