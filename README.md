@@ -24,13 +24,15 @@ iso_url = "https://releases.ubuntu.com/focal/ubuntu-20.04.5-live-server-amd64.is
 iso_checksum = "file:https://releases.ubuntu.com/focal/SHA256SUMS"
 ```
 
+### Automation Configuration
+
 ```bash
 ansible_ssh_public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOOoeaJZBSL0axmVNJksxWpbiEzHIgiVhar0ug8YVzd3 mystic"
 ```
 
 This public key references an insecure private key which has to replaced once deployed.
 
-```
+```bash
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
 QyNTUxOQAAACDjqHmiWQUi9GsZlTSZLMVqW4hMxyIIlYWq9LoPGFc3dwAAAJi8dOftvHTn
@@ -39,7 +41,6 @@ AAAEAPct+bcDGt0Pqe2z7qmUmJ/rXc0D7bqp9qbeRJCiNRlOOoeaJZBSL0axmVNJksxWpb
 iEzHIgiVhar0ug8YVzd3AAAAEGJhZGZldmVyQHRhbmlzaGEBAgMEBQ==
 -----END OPENSSH PRIVATE KEY-----
 ```
-
 
 ```bash
 output_directory = ""
@@ -99,30 +100,32 @@ vsphere_datastore = ""
 ## Allowed URLs
 
 ```yaml
-# FOCAL
-iso_url = "https://releases.ubuntu.com/focal/ubuntu-20.04.5-live-server-amd64.iso"
-iso_checksum = "file:https://releases.ubuntu.com/focal/SHA256SUMS"
-
 # JAMMY
 iso_url = "https://releases.ubuntu.com/jammy/ubuntu-22.04.1-live-server-amd64.iso"
 iso_checksum = "file:https://releases.ubuntu.com/jammy/SHA256SUMS"
+
+# NOBLE
+iso_url = "https://releases.ubuntu.com/noble/ubuntu-24.04.1-live-server-amd64.iso"
+iso_checksum = "file:https://releases.ubuntu.com/noble/SHA256SUMS"
 ```
 
 ## Execute build
 
 ```bash
 # build default basic image
-packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubuntu-template" .
+packer build -var-file="./ova-esx-ubuntu2204.pkrvars.hcl" -only="vsphere-iso.ubuntu-ova-esx" .
 
 # build ova image
-packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubuntu-ova" .
+packer build -var-file="./ova-esx-ubuntu2404.pkrvars.hcl" -only="vsphere-iso.ubuntu-ova-esx" .
 
 # build default basic image on esxi
 packer build -var-file="./ubuntu-vsphere-iso.pkrvars.hcl" -only="vsphere-iso.ubuntu-template-esx" .
 ```
 
-Boot Command for HTTP
+## Create OVA from OVF
 
-```hcl
+Use the ovftool to create a single archive.
 
+```cmd
+ovftool ./build/ubuntu_xxx ubuntu.ova
 ```

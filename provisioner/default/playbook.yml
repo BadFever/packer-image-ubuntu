@@ -2,6 +2,50 @@
 - hosts: all
   become: true
   gather_facts: true
-  roles:
-    - role: ansible-role-bootstrap
-      become: true
+
+  vars:
+    bootstrap_user: mystic
+    ssh_service_name: sshd
+
+  tasks:
+    # On ubuntu 24.04 the service was renamed to ssh
+    - name: Set SSH Service Name
+      ansible.builtin.set_fact:
+        ssh_service_name: ssh
+      when: ansible_distribution_version == "24.04"
+
+    - name: Install required packages
+      ansible.builtin.apt:
+        name:
+          - wget
+          - openssh-server
+          - vim
+        update_cache: yes
+        state: present
+
+    - name: Add mystic user insecure SSH key
+      ansible.posix.authorized_key:
+        user: "{{ bootstrap_user }}"
+        key: "{{ bootstrap_user_ssh_public_key }}"
+        manage_dir: true
+        comment: "{{ bootstrap_user }}"
+        exclusive: true
+        state: present
+      when: bootstrap_user_ssh_public_key | length > 0
+
+    - name: Check ssh config.
+      ansible.builtin.lineinfile:
+        dest: /etc/ssh/sshd_config
+        line: "PubkeyAuthentication yes"
+        state: present
+
+    - name: Ensure sshd started.
+      ansible.builtin.service:
+        name: "{{ ssh_service_name }}"
+        enabled: true
+        state: started
+
+    - name: Delete SSH Keys
+      ansible.builtin.file:
+        path: "etc/ssh/ssh_host_*"
+        state: absent

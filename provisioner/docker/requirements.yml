@@ -1,3 +1,0 @@
-- src: https://github.com/BadFever/ansible-role-common.git
-  version: master
-  name: ansible-role-common

@@ -1,4 +1,4 @@
-source "vsphere-iso" "ubuntu-template" {
+source "vsphere-iso" "ubuntu-vsphere-template" {
   
   vm_name = "${local.build_os}-${local.build_os_friendly_name}-${local.build_os_version}_${local.build_time}(${var.branch})"
   guest_os_type = "${var.guest_os_type}"
@@ -125,9 +125,9 @@ source "vsphere-iso" "ubuntu-ova" {
 
 }
 
-source "vsphere-iso" "ubuntu-template-esx" {
+source "vsphere-iso" "ubuntu-ova-esx" {
   
-  vm_name = "/${local.build_os}${local.build_os_version}_${var.install_base}_${local.build_time}"
+  vm_name = "${local.build_os}${local.build_os_version}_${var.install_base}_${local.build_time}"
   guest_os_type = "${var.guest_os_type}"
   firmware = "efi"
   vm_version = "${var.vsphere_hardware_version}"
